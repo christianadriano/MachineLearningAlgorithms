@@ -16,6 +16,10 @@ function plotData(x, y)
 
 figure; % open a new figure window
 
+plot(x,y,'rx');
+xlabel('city population in 10,000s');
+ylabel('food truck profit in 10,000s');
+title('Food truck profit by city population');
 
 
 
