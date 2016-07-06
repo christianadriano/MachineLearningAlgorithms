@@ -21,6 +21,9 @@ for iter = 1:num_iters
 
 
 
+ hypothesis =  X * theta;
+    
+    theta = theta - (alpha/m)*X'*(hypothesis - y);
 
 
 

@@ -49,7 +49,7 @@ plotData(X, y);
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%% =================== Part 3: Gradient descent ===================
+% =================== Part 3: Gradient descent ===================
 fprintf('Running Gradient Descent ...\n')
 
 X = [ones(m, 1), data(:,1)]; % Add a column of ones to x

@@ -7,6 +7,11 @@ function [theta, J_history] = gradientDescent(X, y, theta, alpha, num_iters)
 m = length(y); % number of training examples
 J_history = zeros(num_iters, 1);
 
+ hypothesis =  X * theta;
+    rows=size(hypothesis,1);
+    columns=size(hypothesis,2);
+    fprintf('rows, columns %f %f',rows,columns);
+    
 for iter = 1:num_iters
 
     % ====================== YOUR CODE HERE ======================
@@ -16,8 +21,9 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCost) and gradient here.
     %
-
-
+    hypothesis =  X * theta;
+    
+    theta = theta - (alpha/m)*X'*(hypothesis - y);
 
 
 
@@ -29,5 +35,7 @@ for iter = 1:num_iters
     J_history(iter) = computeCost(X, y, theta);
 
 end
+
+%plot(num_iters,J_history,'bx');
 
 end

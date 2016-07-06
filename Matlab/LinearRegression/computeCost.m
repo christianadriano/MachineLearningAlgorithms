@@ -13,7 +13,7 @@ m = length(y); % number of training examples
 %               You should set J to the cost.
 
 J = (( X * theta - y )' * ( X * theta - y )) /(2*m);
-fprintf('Cost J %f ',J);
+%fprintf('Cost J %f ',J);
 
 
 
