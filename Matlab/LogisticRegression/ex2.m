@@ -73,7 +73,7 @@ fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
 
-%% ============= Part 3: Optimizing using fminunc  =============
+% ============= Part 3: Optimizing using fminunc  =============
 %  In this exercise, you will use a built-in function (fminunc) to find the
 %  optimal parameters theta.
 
@@ -104,9 +104,9 @@ legend('Admitted', 'Not admitted')
 hold off;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+%pause;
 
-%% ============== Part 4: Predict and Accuracies ==============
+% ============== Part 4: Predict and Accuracies ==============
 %  After learning the parameters, you'll like to use it to predict the outcomes
 %  on unseen data. In this part, you will use the logistic regression model
 %  to predict the probability that a student with score 45 on exam 1 and 
@@ -120,7 +120,9 @@ pause;
 %  Predict probability for a student with score 45 on exam 1 
 %  and score 85 on exam 2 
 
+
 prob = sigmoid([1 45 85] * theta);
+fprintf('\nafter sigmoid call line 125. %f\n',prob);
 fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
          'probability of %f\n\n'], prob);
 
