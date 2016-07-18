@@ -24,8 +24,17 @@ fprintf(' %f \n', g);
 %  2.23787
 
 %% regularized
-%[j g] = costFunctionReg(theta, X, y, 3)
+clear;
+X = [ones(3,1) magic(3)];
+y = [1 0 1]';
+theta = [-2 -1 1 2]';
+
+[j , g] = costFunctionReg(theta, X, y, 3);
 % note: also works for ex3 lrCostFunction(theta, X, y, 3)
+
+fprintf('j: %f\n', j);
+fprintf('g: \n');
+fprintf(' %f \n', g);
 
 % results
 %j = 7.6832

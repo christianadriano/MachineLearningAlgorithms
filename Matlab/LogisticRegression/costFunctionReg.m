@@ -18,9 +18,18 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 
 
+theta_modified = theta
+theta_modified(1) = 0 ;
+theta_squared = sum(theta_modified.^2);
+theta_squared = theta_squared * lambda / (2*m);
+%theta_squared = theta_squared /m;
 
+alpha = 1;
+sigmoidValue= sigmoid(X*theta);
 
+J = ( -1* y' * log(sigmoidValue)  - (1-y)'* log(1-sigmoidValue))/m  + (theta_squared);
 
+grad = ( X' * (sigmoidValue - y) * (alpha/ m)) + (lambda * theta_modified /m);
 
 % =============================================================
 
