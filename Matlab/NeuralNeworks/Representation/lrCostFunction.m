@@ -36,7 +36,20 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+theta_modified = theta
+theta_modified(1) = 0 ;
+theta_squared = sum(theta_modified.^2);
+theta_squared = theta_squared * lambda / (2*m);
+%theta_squared = theta_squared /m;
 
+alpha = 1;
+sigmoidValue= sigmoid(X*theta);
+
+J = ( -1* y' * log(sigmoidValue)  - (1-y)'* log(1-sigmoidValue))/m  + (theta_squared);
+
+grad = ( X' * (sigmoidValue - y) * (alpha/ m)) + (lambda * theta_modified /m);
+
+%fprintf('\n gradient : %f', grad);
 
 
 
@@ -47,6 +60,6 @@ grad = zeros(size(theta));
 
 % =============================================================
 
-grad = grad(:);
+%grad = grad(:); why do I need this?
 
 end
