@@ -43,6 +43,9 @@ theta_squared = theta_squared * lambda / (2*m);
 %theta_squared = theta_squared /m;
 
 alpha = 1;
+fprintf('\n size theta : %f',size(theta))
+fprintf('\n size X : %f',size(X))
+
 sigmoidValue= sigmoid(X*theta);
 
 J = ( -1* y' * log(sigmoidValue)  - (1-y)'* log(1-sigmoidValue))/m  + (theta_squared);
