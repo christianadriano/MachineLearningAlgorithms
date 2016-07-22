@@ -37,7 +37,7 @@ grad = zeros(size(theta));
 %
 
 theta_modified = theta
-theta_modified(1) = 0 ;
+theta_modified(1) = 0;
 theta_squared = sum(theta_modified.^2);
 theta_squared = theta_squared * lambda / (2*m);
 %theta_squared = theta_squared /m;

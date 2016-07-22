@@ -30,10 +30,22 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+%all_theta = [ones(size(all_theta, 1), 1) all_theta];
 
+%produces a matrix that each row is an outcome for the same example
+%the outcome with the largest value corresponds to the most probable class
+%for instance, a matrix like the following
+% 1.0   0.0  // example 1 is from category 1
+% 0.1   0.7  // example 2 is from category 2
+% 0.4   0.9  // example 3 is from category 2
+% 0.8   0.5  / example 4 is from category 1
+h_probability = sigmoid(X  * all_theta'); 
 
+[maxProbabilites,columnIndices] = max(h_probability, [], 2); 
 
+p=columnIndices;
 
+fprintf('\n  size(X), %f: ', size(columnIndices));
 
 
 % =========================================================================
