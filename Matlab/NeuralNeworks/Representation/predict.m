@@ -21,15 +21,33 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Add ones to the X data matrix 
+ a1 = [ones(m, 1) X]; 
+% %a(8,3) * Theta1'(3,4)
+ z2 = a1*Theta1';
+% 
 
+% %a2(8,4)
+a2 = sigmoid(z2); 
+% 
+% 
+%a2_appended(8,5)
+a2_appended = [ones(size(a2,1), 1) a2];
+% 
+%Theta2'(5,4)
+z3 = a2_appended * Theta2';
 
+%h_probabilities(8,4) 
+h_probabilities = sigmoid(z3);
+% 
 
-
-
-
-
-
-% =========================================================================
-
-
-end
+[maxValues,p] = max(h_probabilities, [],2)
+% 
+% 
+% 
+% 
+% 
+% % =========================================================================
+% 
+% 
+% end
