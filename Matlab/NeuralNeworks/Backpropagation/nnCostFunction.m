@@ -65,8 +65,12 @@ Theta2_grad = zeros(size(Theta2));
 %Part-1
 
 a1 = [ones(m, 1) X];
-a2 = sigmoid (Theta1 * a1);
-a3 = sigmoid (Theta2 * a2);
+size(a1)
+a2 = sigmoid (a1*Theta1');
+size(a2)
+a2 = [ones(size(a2,1), 1) a2]; %append a column of ones to a2
+a3 = sigmoid (a2*Theta2');
+size(a3)
 
 for c=1:num_labels
    

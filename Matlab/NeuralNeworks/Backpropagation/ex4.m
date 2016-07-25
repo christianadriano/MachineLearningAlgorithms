@@ -45,7 +45,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% ================ Part 2: Loading Parameters ================
+% ================ Part 2: Loading Parameters ================
 % In this part of the exercise, we load some pre-initialized 
 % neural network parameters.
 
@@ -57,7 +57,7 @@ load('ex4weights.mat');
 % Unroll parameters 
 nn_params = [Theta1(:) ; Theta2(:)];
 
-%% ================ Part 3: Compute Cost (Feedforward) ================
+% ================ Part 3: Compute Cost (Feedforward) ================
 %  To the neural network, you should first start by implementing the
 %  feedforward part of the neural network that returns the cost only. You
 %  should complete the code in nnCostFunction.m to return cost. After
