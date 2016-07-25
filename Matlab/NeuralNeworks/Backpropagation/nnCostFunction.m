@@ -100,7 +100,7 @@ regularization = lambda/(2*m) * (sum(sum(Theta1(:,2:end).^2,2))  +  sum(sum(Thet
     
    % y_zero_ones = (y==y(k)); %A vector with ones only where the element of y is equal to c  
         
-    J = sum(sum(Y .* log(a3)  + (1-Y) .* log(1-a3),2))/(-m)- regularization;
+    J = sum(sum(-Y .* log(a3)  - (1-Y) .* log(1-a3),2))/(m)+ regularization;
     %fprintf('\n size(label_cost) %f',size(label_cost));
     
     
