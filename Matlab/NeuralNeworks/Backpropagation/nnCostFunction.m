@@ -65,57 +65,42 @@ Theta2_grad = zeros(size(Theta2));
 %Part-1
 
 a1 = [ones(m, 1) X]; %matrix of 5000x401
-%size(a1)
 a2 = sigmoid (a1*Theta1'); %matrix of 5000x25
-%size(a2)
 a2 = [ones(size(a2,1), 1) a2]; %append a column of ones to a2
 
 a3 = sigmoid (a2*Theta2'); %matrix of 5000x10 (3x4)
-fprintf('\n ---- Sizes ---\n'); 
+fprintf('\n ---- Sizes ---\n');
 fprintf('\n size(X) %f',size(X));
 fprintf('\n size(a1) %f',size(a1));
 fprintf('\n size(a2) %f',size(a2));
 fprintf('\n size(a3) %f',size(a3));
-fprintf('\n ---- Sizes ---\n'); 
+fprintf('\n ---- Sizes ---\n');
 
-%Y = 0; % zeros(size(a1,1), size(y,1)); %matrix of 5000 x 10
-
- for k =1:num_labels;
-     
-     y_zero_ones = (y==k);
-%     fprintf('\n y_zero_ones %f', y_zero_ones);
-     %size(y_zero_ones)
-     Y(:,k)= y_zero_ones;
-     
- end
+for k =1:num_labels;
+    
+    y_zero_ones = (y==k);
+    Y(:,k)= y_zero_ones;
+    
+end
 
 fprintf('\n size(Y) %f',size(Y));
 
 %Remember to ignore the first column for regularization
-%We do that by considering only from the second column 
+%We do that by considering only from the second column
 regularization = lambda/(2*m) * (sum(sum(Theta1(:,2:end).^2,2))  +  sum(sum(Theta2(:,2:end).^2,2)));
 
+J = sum(sum(-Y .* log(a3)  - (1-Y) .* log(1-a3),2))/(m)+ regularization;
 
-%for k =1:size(y,1) %compute cost for each category
-    
-   % y_zero_ones = (y==y(k)); %A vector with ones only where the element of y is equal to c  
-        
-    J = sum(sum(-Y .* log(a3)  - (1-Y) .* log(1-a3),2))/(m)+ regularization;
-    %fprintf('\n size(label_cost) %f',size(label_cost));
-    
-    
-    %J = J + sum_label_cost; %accumulated cost across all label categories
-%end;
 
-%J = J/(-m);
-
-%fprintf('\n J : %f',J);
-%size(label_cost)
-
+%Part-3
 %Compute gradients by using backward propagation
 %partial derivative of Theta = g'(z1) = a1 .* (1-a1)
 
-Theta1_grad =  a1 .* (1-a1);
+delta3 = a3 - y; %5000x10 5000x1
+delta2 = Theta2*delta3.*a2.*(1-a2);
+delta1 = Theta1*delta2.*a1.*(1-a1);
+
+Theta1_grad =  sum(a1*delta1,2) /m
 
 Theta2_grad =  a2 .* (1-a2);
 
