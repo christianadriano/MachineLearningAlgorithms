@@ -69,13 +69,14 @@ a2 = sigmoid (a1*Theta1'); %matrix of 5000x25
 a2 = [ones(size(a2,1), 1) a2]; %append a column of ones to a2
 
 a3 = sigmoid (a2*Theta2'); %matrix of 5000x10 (3x4)
-fprintf('\n ---- Sizes ---\n');
-fprintf('\n size(X) %f',size(X));
-fprintf('\n size(a1) %f',size(a1));
-fprintf('\n size(a2) %f',size(a2));
-fprintf('\n size(a3) %f',size(a3));
-fprintf('\n ---- Sizes ---\n');
+%fprintf('\n ---- Sizes ---\n');
+%fprintf('\n size(X) %.0f x %.0f',size(X,1),size(X,2));
+%fprintf('\n size(a1) %.0f x %.0f',size(a1,1),size(a1,2));
+%fprintf('\n size(a2) %.0f x %.0f',size(a2,1),size(a2,2));
+%fprintf('\n size(a3) %.0f x %.0f',size(a3,1),size(a3,2));
+%fprintf('\n ---- Sizes ---\n');
 
+%Consolidate all logical vectors in a single matrix
 for k =1:num_labels;
     
     y_zero_ones = (y==k);
@@ -83,44 +84,71 @@ for k =1:num_labels;
     
 end
 
-fprintf('\n size(Y) %f',size(Y));
+%fprintf('\n size(Y) %f',size(Y));
 
 %Remember to ignore the first column for regularization
-%We do that by considering only from the second column
+%We do that by considering only from the second line
 regularization = lambda/(2*m) * (sum(sum(Theta1(:,2:end).^2,2))  +  sum(sum(Theta2(:,2:end).^2,2)));
 
 J = sum(sum(-Y .* log(a3)  - (1-Y) .* log(1-a3),2))/(m)+ regularization;
 
 
 %Part-3
+%Compute the delta errors
+
+delta3 = a3 - Y; %5000x10 5000x10
+%fprintf('\n size(delta3) %0.f x %0.f',size(delta3,1),size(delta3,2));
+%fprintf('\n size(a2) %.0f x %.0f',size(a2,1),size(a2,2));
+
+delta2 = delta3*Theta2.*a2.*(1-a2);
+%fprintf('\n size(delta2) %.0f x %.0f',size(delta2,1),size(delta2,2));
+
 %Compute gradients by using backward propagation
 %partial derivative of Theta = g'(z1) = a1 .* (1-a1)
 
-delta3 = a3 - y; %5000x10 5000x1
-delta2 = Theta2*delta3.*a2.*(1-a2);
-delta1 = Theta1*delta2.*a1.*(1-a1);
+%Step-4
+%Accumulate the gradients
+cummulativeDelta2 =  delta3'* a2;
+%fprintf('\n size(cummulativeDelta2) %.0f x %.0f',size(cummulativeDelta2,1),size(cummulativeDelta2,2));
 
-Theta1_grad =  sum(a1*delta1,2) /m
+cummulativeDelta1 = delta2(:,2:end)' * a1;
+%fprintf('\n size(cummulativeDelta1) %.0f x %.0f',size(cummulativeDelta1,1),size(cummulativeDelta1,2));
 
-Theta2_grad =  a2 .* (1-a2);
+%Step-5
+%Compute the regularized gradients
 
+%fprintf('\n initial size(Theta2_grad) %.f x %.f',size(Theta2_grad,1),size(Theta2_grad,2));
+%Theta2_grad = cummulativeDelta2(:,2:end)/m;
+%fprintf('\n size(Theta2_grad) %.f x %.f',size(Theta2_grad,1),size(Theta2_grad,2));
 
+%Theta2_grad = [cummulativeDelta2(:,1:1) Theta2_grad];
+%fprintf('\n Theta2_grad %f',Theta2_grad);
 
+%fprintf('\n initial size(Theta1_grad) %.f x %.f',size(Theta1_grad,1),size(Theta1_grad,2));
+%Theta1_grad = cummulativeDelta1(:,2:end)/m;
+%fprintf('\n size(Theta1_grad) %.f x %.f',size(Theta1_grad,1),size(Theta1_grad,2));
+%Theta1_grad = [cummulativeDelta1(:,1:1)  Theta1_grad];
+%fprintf('\n Theta1_grad %f',Theta1_grad);
 
+if(lambda>0)
+    cummulativeDelta2 = cummulativeDelta2/m;
+    Theta2_grad = (cummulativeDelta2(:,2:end) + Theta2(:,2:end)*lambda/m );
+    Theta2_grad = [cummulativeDelta2(:,1:1) Theta2_grad ];
 
-
-
-
-
-
-
-
+    cummulativeDelta1 = cummulativeDelta1/m;
+    Theta1_grad = (cummulativeDelta1(:,2:end) + Theta1(:,2:end)*lambda/m );
+    Theta1_grad = [cummulativeDelta1(:,1:1) Theta1_grad ];
+else
+    Theta2_grad = cummulativeDelta2/m;
+    Theta1_grad = cummulativeDelta1/m;
+end    
 % -------------------------------------------------------------
 
 % =========================================================================
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
+fprintf('\n');
 
 
 end
