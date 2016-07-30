@@ -25,6 +25,12 @@ for i=1:p
     
 end;
 
+%Alterantive vectorized solution
+%>> [1,1,1,1; 2,2,2,2; 3,3,3,3] .^ [1:4; 1:4; 1:4]
+% ans =
+%      1     1     1     1
+%      2     4     8    16
+%      3     9    27    81
 
 
 
