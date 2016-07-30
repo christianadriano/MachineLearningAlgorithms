@@ -56,12 +56,11 @@ error_val   = zeros(m, 1);
 for i=1:m
     X_sample = X(1:i,:);
     y_sample = y(1:i,:);
-    lambda=1;
     theta_sample = trainLinearReg(X_sample, y_sample, lambda);
-    lambda = 0; %so it does not compute regularization
-    error_train(i) = linearRegCostFunction(X_sample,y_sample, theta_sample, lambda);
+
+    error_train(i) = linearRegCostFunction(X_sample,y_sample, theta_sample, 0);
     
-    error_val(i) = linearRegCostFunction(Xval,yval, theta_sample, lambda);
+    error_val(i) = linearRegCostFunction(Xval,yval, theta_sample, 0);
 
 end;
 
