@@ -111,7 +111,7 @@ visualizeBoundary(X, y, model);
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-% =============== Part 6: Visualizing Dataset 3 ================
+%% =============== Part 6: Visualizing Dataset 3 ================
 %  The following code will load the next dataset into your environment and 
 %  plot the data. 
 %
