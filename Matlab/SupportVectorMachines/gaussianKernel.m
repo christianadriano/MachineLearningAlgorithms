@@ -15,11 +15,24 @@ sim = 0;
 %               sigma
 %
 %
+sigma_squared = sigma.^2;
 
+xlength = x1-x2;
+xlength_squared = xlength.^2;
+xlength_sum = sum(xlength_squared);
+xlength_sqrt = sqrt(xlength_sum);
 
+sim = exp(-(xlength_sqrt)^2 / (2*sigma_squared));
 
-
-
+%Iterative solution
+%  accum = 0;
+%  for i=1:size(x1,1)
+%     diff = x1(i,1) - x2(i,1);
+%     accum = accum + diff^2;
+%  end
+%  
+%  sim = exp(-accum/2*sigma_squared);
+% 
 
 % =============================================================
     
