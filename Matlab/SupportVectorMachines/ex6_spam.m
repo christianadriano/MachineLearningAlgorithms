@@ -59,7 +59,7 @@ fprintf('Number of non-zero entries: %d\n', sum(features > 0));
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%% =========== Part 3: Train Linear SVM for Spam Classification ========
+% =========== Part 3: Train Linear SVM for Spam Classification ========
 %  In this section, you will train a linear classifier to determine if an
 %  email is Spam or Not-Spam.
 
@@ -77,7 +77,7 @@ p = svmPredict(model, X);
 
 fprintf('Training Accuracy: %f\n', mean(double(p == y)) * 100);
 
-%% =================== Part 4: Test Spam Classification ================
+% =================== Part 4: Test Spam Classification ================
 %  After training the classifier, we can evaluate it on a test set. We have
 %  included a test set in spamTest.mat
 
@@ -93,7 +93,7 @@ fprintf('Test Accuracy: %f\n', mean(double(p == ytest)) * 100);
 pause;
 
 
-%% ================= Part 5: Top Predictors of Spam ====================
+% ================= Part 5: Top Predictors of Spam ====================
 %  Since the model we are training is a linear SVM, we can inspect the
 %  weights learned by the model to understand better how it is determining
 %  whether an email is spam or not. The following code finds the words with
@@ -101,7 +101,7 @@ pause;
 %  'thinks' that these words are the most likely indicators of spam.
 %
 
-% Sort the weights and obtin the vocabulary list
+% Sort the weights and obtain the vocabulary list
 [weight, idx] = sort(model.w, 'descend');
 vocabList = getVocabList();
 
