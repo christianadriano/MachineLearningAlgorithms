@@ -22,18 +22,20 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-%Keeps all distances among each sample(i) and centroid(j)
+%Holds all distances among each sample(i) and centroid(j)
 distanceMatrix = zeros(size(X,1),K);
+Xsquared = X.^2;
+centroidsSquared = centroids.^2;
 
 %Iterative solution
-% for i=1:size(X,1)
-%     for j=1:K
-%         %Compute the distance between the sample i and the centroid j
-%         %multiplies the each line
-%         diff = X(i,:) - centroids(j,:);
-%         distanceMatrix(i,j) = sum(diff.^2,2);
-%     end
-% end
+for i=1:size(X,1)
+    for j=1:K
+        %Compute the distance between the sample i and the centroid j
+        %multiplies the each line
+        diff = X(i,:) - centroids(j,:);
+        distanceMatrix(i,j) = sum(diff.^2,2);
+    end
+end
 
 %Vectorized solution
 
@@ -43,8 +45,8 @@ distanceMatrix = zeros(size(X,1),K);
 for j=1:K
     %Compute the distance between the sample i and the centroid j
     %multiplies the each line
-    diff = bsxfun(@minus,X,centroids(j,:));
-    distanceMatrix(:,j) = sum(diff.^2,2);
+    diff = X(i,:) - centroids(j,:);
+    distanceMatrix(i,j) = sum(diff.^2,2);
 end
 
 
