@@ -1,5 +1,5 @@
 function centroids = computeCentroids(X, idx, K)
-%COMPUTECENTROIDS returs the new centroids by computing the means of the 
+%COMPUTECENTROIDS returns the new centroids by computing the means of the 
 %data points assigned to each centroid.
 %   centroids = COMPUTECENTROIDS(X, idx, K) returns the new centroids by 
 %   computing the means of the data points assigned to each centroid. It is
@@ -26,12 +26,30 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+%Obtain the centroid for that data point
+
+%ITERATIVE SOLUTION
+%For each centroid, obtain all data points
+for j=1:K
+    %row vector with the same number of columns of X
+    totalVector = zeros(1,size(X,2));
+    
+    %Finds all occurrences of the centroid in the idx vector (which is the
+    %vector that maps each sample to a centroid.
+    [rowVector,columnVector] = find(idx==j);
+  %  fprintf('j= %.f, row = %.f \n',j, rowVector);
+   % size(rowVector)
+    for i=1:size(rowVector,1)
+        
+        totalVector = totalVector + X(rowVector(i,1),:);
+    end  
+    centroids(j,:) = totalVector / (size(rowVector,1));
+end
 
 
-
-
-
-
+%SIMPLER ONE
+% sel = find(idx == i) % i ranges from 1 to K
+% centroids(i,:) = mean(X(sel,:))
 
 % =============================================================
 
