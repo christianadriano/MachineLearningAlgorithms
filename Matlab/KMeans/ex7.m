@@ -66,7 +66,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% =================== Part 3: K-Means Clustering ======================
+% =================== Part 3: K-Means Clustering ======================
 %  After you have completed the two functions computeCentroids and
 %  findClosestCentroids, you have all the necessary pieces to run the
 %  kMeans algorithm. In this part, you will run the K-Means algorithm on
@@ -96,7 +96,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% ============= Part 4: K-Means Clustering on Pixels ===============
-%  In this exercise, you will use K-Means to compress an image. To do this,
+%  In this exercise, you wil use K-Means to compress an image. To do this,
 %  you will first run K-Means on the colors of the pixels in the image and
 %  then you will map each pixel on to it's closest centroid.
 %  
@@ -138,7 +138,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% ================= Part 5: Image Compression ======================
+% ================= Part 5: Image Compression ======================
 %  In this part of the exercise, you will use the clusters of K-Means to
 %  compress an image. To do this, we first find the closest clusters for
 %  each example. After that, we 
