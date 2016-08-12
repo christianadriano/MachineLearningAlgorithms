@@ -118,10 +118,12 @@ displayData(X(1:100, :));
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-% =========== Part 5: PCA on Face Data: Eigenfaces  ===================
+%% =========== Part 5: PCA on Face Data: Eigenfaces  ===================
 %  Run PCA and visualize the eigenvectors which are in this case eigenfaces
 %  We display the first 36 eigenfaces.
 %
+% Initialization
+clear ; close all; clc
 
 fprintf(['\nRunning PCA on face dataset.\n' ...
          '(this mght take a minute or two ....)\n\n']);
