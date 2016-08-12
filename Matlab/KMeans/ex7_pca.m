@@ -21,7 +21,7 @@
 %% Initialization
 clear ; close all; clc
 
-%% ================== Part 1: Load Example Dataset  ===================
+% ================== Part 1: Load Example Dataset  ===================
 %  We start this exercise by using a small dataset that is easily to
 %  visualize
 %
@@ -39,7 +39,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% =============== Part 2: Principal Component Analysis ===============
+% =============== Part 2: Principal Component Analysis ===============
 %  You should now implement PCA, a dimension reduction technique. You
 %  should complete the code in pca.m
 %
@@ -68,7 +68,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-%% =================== Part 3: Dimension Reduction ===================
+% =================== Part 3: Dimension Reduction ===================
 %  You should now implement the projection step to map the data onto the 
 %  first k eigenvectors. The code will then plot the data in this reduced 
 %  dimensional space.  This will show you what the data looks like when 
