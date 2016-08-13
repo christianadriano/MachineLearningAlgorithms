@@ -103,7 +103,7 @@ hold off
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%% =============== Part 4: Loading and Visualizing Face Data =============
+% =============== Part 4: Loading and Visualizing Face Data =============
 %  We start the exercise by first loading and visualizing the dataset.
 %  The following code will load the dataset into your environment
 %
@@ -154,7 +154,7 @@ fprintf('%d ', size(Z));
 fprintf('\n\nProgram paused. Press enter to continue.\n');
 pause;
 
-%% ==== Part 7: Visualization of Faces after PCA Dimension Reduction ====
+% ==== Part 7: Visualization of Faces after PCA Dimension Reduction ====
 %  Project images to the eigen space using the top K eigen vectors and 
 %  visualize only using those K dimensions
 %  Compare to the original input, which is also displayed
