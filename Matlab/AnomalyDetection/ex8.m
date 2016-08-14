@@ -68,7 +68,7 @@ ylabel('Throughput (mb/s)');
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%% ================== Part 3: Find Outliers ===================
+% ================== Part 3: Find Outliers ===================
 %  Now you will find a good epsilon threshold using a cross-validation set
 %  probabilities given the estimated Gaussian distribution
 % 
@@ -91,7 +91,7 @@ hold off
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-%% ================== Part 4: Multidimensional Outliers ===================
+% ================== Part 4: Multidimensional Outliers ===================
 %  We will now use the code from the previous part and apply it to a 
 %  harder problem in which more features describe each datapoint and only 
 %  some features indicate whether a point is an outlier.
