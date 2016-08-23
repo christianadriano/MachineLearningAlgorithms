@@ -49,10 +49,7 @@ fprintf('\n Size P: %.f,%.f\n', size(P,1),size(P,2));
 
 %Step-2 Computing the movie rating error by subtracting Y from the predicted ratings. 
 
-Rating_error = (P - Y).^2;
-Error_factor = Rating_error.* R;
-
-J =  (sum(Error_factor)) / 2;
+Rating_error = P - Y)^2)/2
 
 
 

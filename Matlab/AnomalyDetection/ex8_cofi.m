@@ -42,7 +42,7 @@ xlabel('Users');
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
-%% ============ Part 2: Collaborative Filtering Cost Function ===========
+% ============ Part 2: Collaborative Filtering Cost Function ===========
 %  You will now implement the cost function for collaborative filtering.
 %  To help you debug your cost function, we have included set of weights
 %  that we trained on that. Specifically, you should complete the code in 
@@ -196,7 +196,7 @@ options = optimset('GradObj', 'on', 'MaxIter', 100);
 
 % Set Regularization
 lambda = 10;
-theta = fmincg (@(t)(cofiCostFunc(t, Y, R, num_users, num_movies, ...
+theta = fmincg (@(t)(cofiCostFunc(t, Ynorm , R, num_users, num_movies, ...
                                 num_features, lambda)), ...
                 initial_parameters, options);
 
